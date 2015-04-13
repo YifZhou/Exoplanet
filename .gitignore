@@ -2,4 +2,4 @@ rotated.fits
 test.fits
 test_im.fits
 fakePlanetCube_Amp=2000.fits
-center_im.fits
+center_im.fits*.fits
