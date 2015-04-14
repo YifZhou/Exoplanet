@@ -11,7 +11,7 @@ g = 1.0
 pixelScale = 0.009942 #arcsec/pixel
 rmin = 0.2/pixelScale
 rmax = 3.0/pixelScale # the range of annuli, inner radius: 0.3 arcsec, outer radius: 3.0
-rlist = np.linspace(rmin, rmax, np.floor((rmax - rmin)/dr))
+rlist = np.arange(rmin, rmax, dr)
 deltaR = np.sqrt(np.pi*g*NA/4) * FWHM
 
 
@@ -49,17 +49,20 @@ def loci(imageCube, rotateAngle):
     for i in range(nImages):
         image0 = imageCube[i, :, :]
         print('Number {0} image starts to be processed...'.format(i))
-        for r_i in rlist:
+        for rIndex, r_i in enumerate(rlist):
+
             phiList = np.linspace(0, 360, np.round(360/(180/np.pi/(g/2. + 2*r_i/FWHM * np.sqrt(g/np.pi/NA)))))
             PSFList = getPSFSet(rotateAngle[i], r_i, rotateAngle)
-
+            print('Ring {0} starts to be processed, there are {1} optimized regions in ring {0} and {2} satiesfied PSF images'.format(rIndex, len(phiList) - 1, len(PSFList)))
             for phiIndex, phi_i in enumerate(phiList[:-1]):
+                print('Region {0} starts to be processed'.format(phiIndex))
                 dim1, dim2 = np.where((radius>=r_i) & (radius <= r_i + deltaR) & (posAngle >= phi_i) & (posAngle <= phiList[phiIndex + 1]))
                 coeff = lociCoeff(image0[dim1, dim2], imageCube[PSFList,:,:][:, dim1, dim2])
-
+                subDim1, subDim2 = np.where((radius>=r_i) & (radius <= r_i + dr) & (posAngle >= phi_i) & (posAngle <= phiList[phiIndex + 1])) # region for subtraction
                 for coeffIndex, coeff_i in enumerate(coeff):
-                    subDim1, subDim2 = np.where((radius>=r_i) & (radius <= r_i + dr) & (posAngle >= phi_i) & (posAngle <= phiList[phiIndex + 1]))
                     subtractedCube[i, subDim1, subDim2] = subtractedCube[i, subDim1, subDim2] - imageCube[PSFList[coeffIndex], subDim1, subDim2] * coeff_i
+
+        print('*'*30)
 
     return subtractedCube
 
@@ -69,6 +72,11 @@ if __name__ == '__main__':
     imCube = fits.getdata(dataCubeFN, 'primary') # use getdata function in astropy.io module to obtain data from fits file
     rotAngleFN = 'rotnth.fits'
     rotAngle = fits.getdata(rotAngleFN, 'primary')
-    outFN = 'loci_test'
+    useID = np.linspace(0, 93, 94).astype('int')
+    imCube = imCube[useID, :, :]
+    rotAngle = rotAngle[useID]
+    fits.writeto('loci_test_angle.fits', rotAngle, clobber = True)
+    outFN = 'loci_n=94'
+    print('Loci about to begin\n. There are totally {0} rings sampling from {1} to {2}'.format(len(rlist), rmin, rmax))
     lociImageCube = loci(imCube, rotAngle)
     fits.writeto(outFN + '_cube.fits', lociImageCube, clobber = True)
