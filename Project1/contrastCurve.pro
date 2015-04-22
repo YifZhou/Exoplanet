@@ -12,8 +12,9 @@ PRO contrastCurve, image, PSF_Amp, outFN
         inAnnuli = where((dist le 20) AND (dist GE 15))
         sky = sqrt(mean(image(inAnnuli)^2))
        ;; use aper to do apeture photometure
-       ;; calculated sky value is noise
-       contrastCurveStack[j, i] = PSF_Amp/sky ;;signal is known as the peak of PSF
+        ;; calculated sky value is noise
+        signal = max(image[where(dist LE 5)])
+       contrastCurveStack[j, i] = signal/sky ;;signal is known as the peak of PSF
     ENDFOR 
   ENDFOR
   Curve = mean(contrastCurveStack,dimension = 2)

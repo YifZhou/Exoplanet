@@ -28,5 +28,8 @@
     "fig:median_curve"
     "fig:simple_adi"
     "fig:adi_fakeplanet"
-    "adi:median_curve")))
+    "fig:adi_median_curve"
+    "fig:adi_with_error"
+    "fig:loci"
+    "tab:ratio")))
 

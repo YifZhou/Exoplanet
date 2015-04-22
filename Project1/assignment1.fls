@@ -1,4 +1,4 @@
-PWD /Users/ZhouYf/Documents/Course/Exoplanet
+PWD /Users/ZhouYf/Documents/Course/Exoplanet/Project1
 INPUT /usr/local/texlive/2014/texmf.cnf
 INPUT /usr/local/texlive/2014/texmf-dist/web2c/texmf.cnf
 INPUT /usr/local/texlive/2014/texmf-var/web2c/xetex/xelatex.fmt
@@ -183,4 +183,7 @@ INPUT median_contrastCurve_amp=2000.pdf
 INPUT simple_ADI.png
 INPUT adi_fake.png
 INPUT adi_contrastCurve_amp=2000.pdf
+INPUT adi_with_error.png
+INPUT adiwithErrorCurve.pdf
+INPUT loci.png
 INPUT assignment1.aux

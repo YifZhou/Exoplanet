@@ -1,3 +1,4 @@
+
 \documentclass[paper=letter, fontsize=11pt]{scrartcl} % A4 paper and 11pt font size
 
 \usepackage[T1]{fontenc} % Use 8-bit encoding that has 256 glyphs
@@ -97,7 +98,27 @@ The procedure to make the contrast curve is described as following.
    \label{fig:median_curve}
  \end{figure}
  
-\section{ADI}
+ \section{ADI}
+ \section{Simple ADI}
+ ADI method applied here is the simplest case that illustrate in
+ Marois et. al. (2008). Every image except the target image is treated
+ as PSF image. The PSF is constructed by the median combining of all
+ PSF images. No selection of PSF images or calculation of any scale
+ factors is carried out here. The result of simple ADI application is
+ shown in Figure \ref{fig:simple_adi}.
+
+ADI processed image with fake planets injected is shown in Figure
+\ref{fig:adi_fakeplanet}. In the image, it is clearly shown that self
+subtraction is very severe. This is due to coarse selection of PSF
+images. In a more sophisticated manner, the PSF images should be
+selected with angular distances that are above certain threshold
+compare to the target image to avoid self subtraction.
+
+S/N curve is shown in Figure \ref{fig:adi_median_curve}. In general,
+ADI improves  signal to noise significantly. However, odd shape of the
+curve appears at around $2.5''$. I think this is also caused by self
+subtraction.
+
 \begin{figure}[!h]
   \centering
   \includegraphics[width=\textwidth]{simple_ADI}
@@ -122,9 +143,41 @@ The procedure to make the contrast curve is described as following.
    \caption{Contrast curve for image that is shown in Figure
      \ref{fig:adi_fakeplanet} . The PSF that used as fake planet is
      scaled the same way as in Figure \ref{fig:median_fakeplanet}}
-   \label{adi:median_curve}
+   \label{fig:adi_median_curve}
  \end{figure}
-  
+
+ \subsection{ADI with centering error}
+ If $\pm 5$ pixels uncertainties in x and y coordinates are added, the
+ performance of ADI reduced significantly. All planets are barely
+ seen. Therefore, precisely align images is essential in high contrast
+ image processing.
+ \begin{figure}
+   \centering
+   \includegraphics[width=0.48\textwidth]{adi_with_error}
+   \includegraphics[width=0.48\textwidth]{adiwithErrorCurve}
+   \caption{ADI wiht centering error. All planets are barely seen}
+   \label{fig:adi_with_error}
+ \end{figure}
+ 
+   \section{LOCI}
+   \begin{figure}
+     \centering
+    \includegraphics[width=\textwidth]{loci}
+     \caption{Image processed by LOCI}
+     \label{fig:loci}
+   \end{figure}
+
+   \begin{table}[h]
+     \centering
+          \caption{Star/planet brightness ratio of HR8799 system measured
+       from LOCI image}
+     \begin{tabular}{|c|c|c|c|c|}
+       \hline
+       Planet&b&c&d&e\\\hline
+       $\Delta$mag&10.71&10.0&9.72&9.02\\\hline
+     \end{tabular}
+     \label{tab:ratio}
+   \end{table}
 \end{document}
 %%% Local Variables:
 %%% mode: latex

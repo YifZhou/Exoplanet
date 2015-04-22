@@ -1,5 +1,5 @@
 # Fdb version 3
-["pdflatex"] 1428884843 "assignment1.tex" "assignment1.pdf" "assignment1" 1428884846
+["pdflatex"] 1429659868 "assignment1.tex" "assignment1.pdf" "assignment1" 1429659870
   "/usr/local/texlive/2014/texmf-dist/fonts/map/fontname/texfonts.map" 1272929888 3287 e6b82fe08f5336d4d5ebc73fb1152e87 ""
   "/usr/local/texlive/2014/texmf-dist/fonts/tfm/jknappen/ec/ecrm1095.tfm" 1136768653 3584 929cdff2b7a8c11bd4d49fd68cb0ae70 ""
   "/usr/local/texlive/2014/texmf-dist/fonts/tfm/jknappen/ec/ecss1095.tfm" 1136768653 3584 8ece407347b270c252c46fdfaef5a9ef ""
@@ -72,13 +72,16 @@
   "/usr/local/texlive/2014/texmf.cnf" 1401025936 577 a59edbde8d3a8c549d0eeaab1739e2ff ""
   "adi_contrastCurve_amp=2000.pdf" 1428884309 12866 ab88d2e7d56815897169da74f5bf3001 ""
   "adi_fake.png" 1428884608 1174761 772135d727afda0ad642236143d51f9b ""
-  "assignment1.aux" 1428884845 1822 805db85c69058c23a443073ed406bf8f ""
-  "assignment1.tex" 1428884839 5315 26363483effd9ce527c97a9e61045edf ""
+  "adi_with_error.png" 1429580203 782163 7c5cabe01e90de4d9ac79dcdaac6c774 ""
+  "adiwithErrorCurve.pdf" 1429581047 14837 c6d716943926607b35d98ebd961c4ccf ""
+  "assignment1.aux" 1429659869 2538 f65b993420c74e25f1d16c463d5ea318 ""
+  "assignment1.tex" 1429659867 7356 cfc2d204e1bb3c3afbf2380e91ac67f6 ""
+  "loci.png" 1429577249 66232 a8b19bfd6ec2641eaec2684aa3009161 ""
   "median.png" 1428360929 335676 5f4e0a94f99b87580c87820a325d563b ""
   "median_contrastCurve_amp=2000.pdf" 1428884319 14166 ae7267b171f87f5a0243cf943988c8d2 ""
   "median_fake.png" 1428883164 998423 7b47753d765d88c4af598ff0020ed56b ""
   "simple_ADI.png" 1428363952 796666 7aec798e173c96cd240af1469604b2a7 ""
   (generated)
   "assignment1.aux"
-  "assignment1.log"
   "assignment1.pdf"
+  "assignment1.log"

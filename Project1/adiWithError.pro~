@@ -1,11 +1,10 @@
-PRO adi, infn
+PRO adiithError, infn
   cube = readfits(infn)
   rotnth= readfits('rotnth.fits')
   adiCube = fltarr((size(cube))[1:(size(cube))[0]])
   index = findgen((size(cube))[(size(cube))[0]])
   FOR i=0, (size(cube))[(size(cube))[0]] - 1 DO BEGIN
-     adiCube[*, *, i] = rot(cube[*, *, i] - median(cube[*, *, where(index ne i)], dimension = 3), rotnth[i], 1., 1224./2, 1224./2, /piv, cub = -0.5)
-     print, 'number ', i, ' image finished adi'
+     cube[*, *, i]
   ENDFOR
   
   FOR i=0, (size(cube))[(size(cube))[0]] - 1 DO BEGIN
